@@ -1,0 +1,136 @@
+### 🧵 **1. Basics of Strings:**
+- **Definition:** A string is a sequence of characters (letters, digits, symbols) enclosed in quotes.
+  - **Syntax:**  
+    ```javascript
+    let str = "Hello, World!";
+    ```
+
+- **Types of Quotes:**
+  - **Single (`'`)**
+  - **Double (`"`)**
+  - **Template Literals (`` ` ``)**: Allows embedded expressions with `${}`.
+    ```javascript
+    let name = "John";
+    console.log(`Hello, ${name}!`);  // Output: Hello, John!
+    ```
+
+- **String Immutability:** Strings cannot be changed directly; operations create new strings.
+
+---
+
+### ⚙️ **2. Time Complexity of Common String Operations:**
+- **Access character by index:** `O(1)`
+  ```javascript
+  let char = str[0];
+  ```
+
+- **Concatenation:** `O(n)` where `n` is the length of the resulting string.
+  ```javascript
+  let newStr = str1 + str2;
+  ``` 
+
+- **Length retrieval:** `O(1)` (accessing `.length`)
+  ```javascript
+  let length = str.length;
+  ```
+
+- **Substring search (`includes`, `indexOf`):** `O(n)`
+  ```javascript
+  str.includes("word");
+  ```
+
+- **Iterating through each character:** `O(n)`
+  ```javascript
+  for (let char of str) {
+    console.log(char);
+  }
+  ```
+
+---
+
+### 📚 **3. Common String Methods in JavaScript:**
+
+**Basic Methods:**
+| Method | Description | Example |
+|--------|-------------|---------|
+| `length` | Returns length of the string | `"hello".length → 5` |
+| `charAt(index)` | Returns character at specified index | `"hello".charAt(1) → "e"` |
+| `indexOf(substring)` | Returns first index of substring | `"hello".indexOf("l") → 2` |
+| `includes(substring)` | Checks if string contains substring | `"hello".includes("he") → true` |
+| `toLowerCase()` | Converts to lowercase | `"HELLO".toLowerCase() → "hello"` |
+| `toUpperCase()` | Converts to uppercase | `"hello".toUpperCase() → "HELLO"` |
+| `concat(str2)` | Joins strings | `"Hi".concat(" there") → "Hi there"` |
+
+**Intermediate Methods:**
+| Method | Description | Example |
+|--------|-------------|---------|
+| `substring(start, end)` | Extracts part of a string | `"hello".substring(1, 4) → "ell"` |
+| `slice(start, end)` | Similar to substring but supports negative indices | `"hello".slice(-3) → "llo"` |
+| `replace(old, new)` | Replaces first match | `"apple".replace("p", "b") → "abple"` |
+| `replaceAll(old, new)` | Replaces all matches | `"apple".replaceAll("p", "b") → "abble"` |
+| `split(separator)` | Splits string into array | `"a,b,c".split(",") → ["a", "b", "c"]` |
+| `trim()` | Removes whitespace from both ends | `" hello ".trim() → "hello"` |
+
+**Advanced Methods:**
+| Method | Description | Example |
+|--------|-------------|---------|
+| `startsWith(prefix)` | Checks if string starts with prefix | `"hello".startsWith("he") → true` |
+| `endsWith(suffix)` | Checks if string ends with suffix | `"hello".endsWith("lo") → true` |
+| `match(regex)` | Matches string against a regular expression | `"abc".match(/a/) → ["a"]` |
+| `padStart(length, char)` | Pads the beginning to reach desired length | `"5".padStart(3, "0") → "005"` |
+| `padEnd(length, char)` | Pads the end to reach desired length | `"5".padEnd(3, "0") → "500"` |
+| `localeCompare(str)` | Compares strings for sorting | `"apple".localeCompare("banana") → -1` |
+
+---
+
+### 🚀 **4. Important Algorithms with Strings:**
+
+1. **Reverse a String:**
+   ```javascript
+   function reverseString(str) {
+     return str.split('').reverse().join('');
+   }
+   ```
+
+2. **Check if Palindrome:**
+   ```javascript
+   function isPalindrome(str) {
+     const reversed = str.split('').reverse().join('');
+     return str === reversed;
+   }
+   ```
+
+3. **Find the Longest Substring Without Repeating Characters:**  
+   (Sliding Window Technique)
+   ```javascript
+   function longestUniqueSubstring(str) {
+     let set = new Set();
+     let maxLen = 0, left = 0;
+
+     for (let right = 0; right < str.length; right++) {
+       while (set.has(str[right])) {
+         set.delete(str[left]);
+         left++;
+       }
+       set.add(str[right]);
+       maxLen = Math.max(maxLen, right - left + 1);
+     }
+     return maxLen;
+   }
+   ```
+
+4. **String Anagram Check:**  
+   ```javascript
+   function areAnagrams(str1, str2) {
+     return str1.split('').sort().join('') === str2.split('').sort().join('');
+   }
+   ```
+
+---
+
+### 📝 **Practice Problems to Master Strings:**
+- **Basic:** Reverse a string, find vowels, count characters.
+- **Intermediate:** Validate palindrome, check anagram, remove duplicates.
+- **Advanced:** Implement substring search algorithms, such as Rabin-Karp or KMP.
+
+---

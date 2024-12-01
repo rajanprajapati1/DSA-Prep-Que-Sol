@@ -1,8 +1,9 @@
 import React from 'react'
+import StringMethods from './Theory/strings/StringMethods'
 
 const App = () => {
   return (
-    <div>App</div>
+    <StringMethods/>
   )
 }
 
